@@ -55,6 +55,7 @@ brief <- function(inputData, exc = NULL){
 
 }
 
+#' @export
 cardinality <- function(i){
   length(unique(i))
 }
