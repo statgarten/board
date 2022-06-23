@@ -13,3 +13,6 @@
  - how data is distributed
  - criteria for outlier?
  - quantile statistics?
+
+![distribution example](https://user-images.githubusercontent.com/6457691/175271375-099947f1-c449-4119-9aa6-97fae1807c8e.png)
+![correlation example](https://user-images.githubusercontent.com/6457691/175271383-ba19688b-ced0-4071-9875-ba36a410449d.png)
