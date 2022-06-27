@@ -1,7 +1,9 @@
-#'
+#' @importFrom dplyr pull
+#' @importFrom tibble is_tibble
 #' @export
 #'
 outlier <- function(i){
+  if(is_tibble(i)){ i <- dplyr::pull(i)}
   qs <- quantile(i)
   q1 <- qs[2] # 25%
   q3 <- qs[4] # 75%

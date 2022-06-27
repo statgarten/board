@@ -1,12 +1,18 @@
-#'
+#' @importFrom tibble is_tibble
+#' @importFrom dplyr pull
 #' @export
 #'
 describe <- function(i){
-  i <- i[which(!is.na(i))]
-  count = length(i)
 
-  m = mean(i)
-  s = sd(i)
+  i <- na.omit(i)
+  if(is_tibble(i)){
+    i <- dplyr::pull(i)
+  }
+
+  count <- length(i)
+
+  m = round(mean(i), 3)
+  s = round(sd(i), 3)
 
   qs <- quantile(i)
   q0 <- qs[1] # min

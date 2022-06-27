@@ -1,46 +1,60 @@
 #' @import magrittr
+#' @importFrom tibble is_tibble
 #' @export
 #'
 
-brief <- function(inputData, exc = NULL){
-
-  # dataset description
+brief <- function(inputData, exc = NULL) {
   nr <- nrow(inputData)
   nc <- ncol(inputData)
   cnt <- length(which(is.na(inputData)))
-  rat <- cnt / (nc * nr) * 100
-
-  desc <- list(nrow = nr, ncol = nc, missingCellCount = cnt, missingCellRatio = rat)
+  # dataset description
+  desc <- list(
+    nrow = nr,
+    ncol = nc,
+    missingCellCount = cnt, # NA Count
+    missingCellRatio = round(cnt / (nc * nr) * 100, 3) # NA Ratio
+  )
 
   ## cardinality
-  cards <- sapply(1:nc, function(i){cardinality(inputData[,i])})
+  cards <- sapply(1:nc, function(i) {
+    cardinality(inputData[, i])
+  })
 
   ## correlation
-  if(is.null(exc)){
+  if (is.null(exc)) {
     cors <- cor(inputData)
+  } else {
+    cors <- cor(inputData[, -exc])
   }
-  else{
-    cors <- cor(inputData[,-exc])
-  }
+  cors <- round(cors, 3)
 
   ## missing
-  miss <- c()
-  miss <- sapply(1:nc, function(i){
-    m <- missing(inputData[,i])
-    return(paste0(m$cnt, ' (', m$rat, '%)'))
+  miss <- sapply(1:nc, function(i) {
+    m <- missing(inputData[, i])
+    if(is.na(m$cnt)){
+      return(NA)
+    }
+    return(paste0(m$cnt, " (", m$rat, "%)"))
   })
 
   ## zero
-  zeros <- sapply(1:nc, function(i){
-    z <- zero(inputData[,i])
-    return(paste0(z$cnt, ' (', z$rat, '%)'))
+  zeros <- sapply(1:nc, function(i) {
+    z <- zero(inputData[, i])
+    if(is.na(z$cnt)){
+      return(NA)
+    }
+    return(paste0(z$cnt, " (", z$rat, "%)"))
   })
 
   ## uniform
-  unif <- sapply(1:nc, function(i){isUniform(inputData[,i])})
+  unif <- sapply(1:nc, function(i) {
+    isUniform(inputData[, i])
+  })
 
   ## unique
-  uniq <- sapply(1:nc, function(i){isUnique(inputData[,i])})
+  uniq <- sapply(1:nc, function(i) {
+    isUnique(inputData[, i])
+  })
 
   return(list(
     names = colnames(inputData),
@@ -52,32 +66,48 @@ brief <- function(inputData, exc = NULL){
     unif = unif,
     uniq = uniq
   ))
-
 }
 
 #' @export
-cardinality <- function(i){
-  length(unique(i))
+cardinality <- function(i) {
+  if (is_tibble(i)) {
+    return(nrow(unique(i)))
+  }
+  return(length(unique(i)))
 }
 
-missing <- function(i){
+missing <- function(i) {
   cnt <- length(which(is.na(i)))
-  rat <- cnt / length(i) * 100
-
+  if(is_tibble(i)){
+    rat <- round(cnt / nrow(i) * 100, 3)
+  }
+  else{
+    rat <- round(cnt / length(i) * 100, 3)
+  }
+  if(cnt == 0){
+    return(list(cnt = NA, rat = NA))
+  }
   return(list(cnt = cnt, rat = rat))
 }
 
-isUniform <- function(i){
-  length(unique(table(i))) == 1
+isUniform <- function(i) {
+  return(length(unique(table(i))) == 1)
 }
 
-isUnique <- function(i){
-  length(which(duplicated(i))) == 0
+isUnique <- function(i) {
+  return(length(which(duplicated(i))) == 0)
 }
 
-zero <- function(i){
-  cnt <- length(which(i==0))
-  rat <- cnt / length(i) * 100
+zero <- function(i) {
+  cnt <- length(which(i == 0))
+  if(is_tibble(i)){
+    rat <- round(cnt / nrow(i) * 100, 3)
+  }
+  else{
+    rat <- round(cnt / length(i) * 100, 3)
+  }
+  if(cnt == 0){
+    return(list(cnt = NA, rat = NA))
+  }
   return(list(cnt = cnt, rat = rat))
 }
-

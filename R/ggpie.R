@@ -5,14 +5,19 @@
 #'
 ggpie <- function(i){
   i <- as.data.frame(table(i))
-
+  i[,1] <- as.character(i[,1])
   colnames(i) <- c('variable', 'value')
 
   if(nrow(i) > 6){
-    i[7,] <- c('Etc', colSums(i[7:nrow,]))
+    i <- i[order(i$value,decreasing = TRUE), ]
+
+
+    i[7,] <- c('Etc', sum(i[7:nrow(i), 2]))
+    i <- i[1:7,]
   }
   i[,1] <- as.factor(i[,1])
-  i[,2] <- round( 100/sum(i[,2])*i[,2] )
+  i[,2] <- as.numeric(i[,2])
+  i[,2] <- round( 100*i[,2]/sum(i[,2]) ) # percentage
 
   g <-
     ggplot(i, aes(x="", y = value, fill = variable)) +
