@@ -1,9 +1,20 @@
+#' @title Outlier of data
+#' @description calculate outlier
+#' @examples
+#' outlier(iris[,'Sepal.Width'])
+#'
+#' @param i data
+#'
+#' @return named list
+#' @seealso https://en.wikipedia.org/wiki/Interquartile_range (IQR)
+#'
 #' @importFrom dplyr pull
 #' @importFrom tibble is_tibble
 #' @export
 #'
 outlier <- function(i){
   if(is_tibble(i)){ i <- dplyr::pull(i)}
+  i <- i[which(!is.na(i))]
   qs <- quantile(i)
   q1 <- qs[2] # 25%
   q3 <- qs[4] # 75%

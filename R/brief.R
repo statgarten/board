@@ -1,9 +1,18 @@
+#' @title data profiling
+#' @description dimension, missing, cardinality, correlation, zero, uniform, unique for each variables
+#' @examples
+#' brief(iris)
+#'
+#' @param inputData data frame
+#'
+#' @return data frame with changed column
 #' @import magrittr
+#' @importFrom dplyr select
 #' @importFrom tibble is_tibble
 #' @export
 #'
 
-brief <- function(inputData, exc = NULL) {
+brief <- function(inputData) {
   nr <- nrow(inputData)
   nc <- ncol(inputData)
   cnt <- length(which(is.na(inputData)))
@@ -21,12 +30,10 @@ brief <- function(inputData, exc = NULL) {
   })
 
   ## correlation
-  if (is.null(exc)) {
-    cors <- cor(inputData)
-  } else {
-    cors <- cor(inputData[, -exc])
-  }
-  cors <- round(cors, 3)
+  cors <- inputData %>%
+    dplyr::select(names(Filter(is.numeric, inputData))) %>%
+    cor(use = 'complete.obs') %>%
+    round(3)
 
   ## missing
   miss <- sapply(1:nc, function(i) {
@@ -68,7 +75,9 @@ brief <- function(inputData, exc = NULL) {
   ))
 }
 
-#' @export
+# is it necessary?
+# #' @export
+#
 cardinality <- function(i) {
   if (is_tibble(i)) {
     return(nrow(unique(i)))

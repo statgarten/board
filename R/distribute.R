@@ -1,3 +1,16 @@
+#' @title see data's distribution.
+#' @description build histogram from character input
+#' @examples
+#' distribute(iris[,"Sepal.Width"])
+#' distribute(iris$Sepal.Length) # this will be work too.
+#'
+#'
+#' @param i vector of numeric data
+#' @param xlabel label for x axis (default is `value`), y axis set as 'count'.
+#'
+#' @return histogram built with ggplot
+#' @seealso `geom_histogram`
+#'
 #' @import ggplot2
 #' @import magrittr
 #' @importFrom tibble is_tibble
@@ -6,7 +19,6 @@
 distribute <- function(i, xlabel = NULL){
 
   # i must numeric
-
   if(is_tibble(i)){
     xlabel = names(i)
     names(i) <- 'X'

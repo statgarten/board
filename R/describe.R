@@ -1,3 +1,14 @@
+#' @title summary statistics from data with character value
+#' @description count, mean, sd, quantile values.
+#' @examples
+#' describe(iris[,"Sepal.Width"])
+#' describe(iris$Sepal.Length) # this will be work too.
+#'
+#' @param i data
+#'
+#' @return named list
+#' @seealso base `summary` function
+#'
 #' @importFrom tibble is_tibble
 #' @importFrom dplyr pull
 #' @export
@@ -14,7 +25,7 @@ describe <- function(i){
   m = round(mean(i), 3)
   s = round(sd(i), 3)
 
-  qs <- quantile(i)
+  qs <- quantile(i, na.rm= TRUE)
   q0 <- qs[1] # min
   q1 <- qs[2] # 25%
   q2 <- qs[3] # median
