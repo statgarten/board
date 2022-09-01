@@ -1,18 +1,33 @@
-# board
- 
-## Dataset Description
-![Dataset Description](https://user-images.githubusercontent.com/6457691/174742930-b20ed6a1-7ef1-4c0f-ba20-b190779c5b9d.png)
-- Statistics
-- variable 
-- correlation
+# :yellow_heart: board <img src = "" width = 120 align = 'right'>
 
-## Column Description
-- description for each variables.
-- categorical : which is dominate
-- numeric: is normal distributed?
- - how data is distributed
- - criteria for outlier?
- - quantile statistics?
+Data Profiling functions considered with shiny.
 
-![distribution example](https://user-images.githubusercontent.com/6457691/175271375-099947f1-c449-4119-9aa6-97fae1807c8e.png)
-![correlation example](https://user-images.githubusercontent.com/6457691/175271383-ba19688b-ced0-4071-9875-ba36a410449d.png)
+## :clipboard: Prerequisites
+
+* [magrittr](https://magrittr.tidyverse.org/) - 2.0.3
+* [ggplot2](https://ggplot2.tidyverse.org/) - 3.3.6
+* [dplyr](https://dplyr.tidyverse.org/) - 1.0.9
+* [scales](https://scales.r-lib.org/) - 1.2.1
+* [tibble](https://tibble.tidyverse.org/) - 3.1.8
+
+## :wrench: Install
+
+```r
+remotes::install_github('statgarten/board')
+library(scissor)
+```
+
+## :paperclip: Dependency
+* [door](https://github.com/statgarten/door)
+
+## :blush: Authors
+* :octocat: Jinhwan Kim [@jhk0530](http://github.com/jhk0530)
+
+## :memo: License
+Copyright :copyright: 2022 Jinhwan Kim
+This project is [MIT](https://opensource.org/licenses/MIT) licensed
+
+*This README was generated with :two_hearts: by [shinyReadme](http://github.com/jhk0530/shinyReadme)*
+
+
+
