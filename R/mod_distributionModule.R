@@ -2,15 +2,17 @@
 #' @title Shiny Module for see distribution of variable.
 #' @description distributionModule UI Function.
 #' @examples
-#' if(interactive()){
-#' library(shiny)
-#' ui <- fluidPage(
-#'   mod_distributionModule_ui('module')
-#' )
-#' server <- function(input, output, session) {
-#'   mod_distributionModule_server('module', reactive({iris}))
-#' }
-#' shinyApp(ui, server)
+#' if (interactive()) {
+#'   library(shiny)
+#'   ui <- fluidPage(
+#'     mod_distributionModule_ui("module")
+#'   )
+#'   server <- function(input, output, session) {
+#'     mod_distributionModule_server("module", reactive({
+#'       iris
+#'     }))
+#'   }
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @param id id of module
@@ -51,15 +53,17 @@ mod_distributionModule_ui <- function(id) {
 #' @title Shiny Module for see distribution of variable.
 #' @description distributionModule Server Functions
 #' @examples
-#' if(interactive()){
-#' library(shiny)
-#' ui <- fluidPage(
-#'   mod_distributionModule_ui('module')
-#' )
-#' server <- function(input, output, session) {
-#'   mod_distributionModule_server('module', reactive({iris}))
-#' }
-#' shinyApp(ui, server)
+#' if (interactive()) {
+#'   library(shiny)
+#'   ui <- fluidPage(
+#'     mod_distributionModule_ui("module")
+#'   )
+#'   server <- function(input, output, session) {
+#'     mod_distributionModule_server("module", reactive({
+#'       iris
+#'     }))
+#'   }
+#'   shinyApp(ui, server)
 #' }
 #'
 #' @param id id of module
@@ -128,7 +132,6 @@ mod_distributionModule_server <- function(id, inputData) {
             )
           )
         })
-
       } else {
         output$distBox <- renderUI({ # not numeric -> Empty
           tagList()
@@ -144,4 +147,3 @@ mod_distributionModule_server <- function(id, inputData) {
     })
   })
 }
-

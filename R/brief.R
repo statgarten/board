@@ -32,13 +32,13 @@ brief <- function(inputData) {
   ## correlation
   cors <- inputData %>%
     dplyr::select(names(Filter(is.numeric, inputData))) %>%
-    cor(use = 'complete.obs') %>%
+    cor(use = "complete.obs") %>%
     round(3)
 
   ## missing
   miss <- sapply(1:nc, function(i) {
     m <- missing(inputData[, i])
-    if(is.na(m$cnt)){
+    if (is.na(m$cnt)) {
       return(NA)
     }
     return(paste0(m$cnt, " (", m$rat, "%)"))
@@ -47,7 +47,7 @@ brief <- function(inputData) {
   ## zero
   zeros <- sapply(1:nc, function(i) {
     z <- zero(inputData[, i])
-    if(is.na(z$cnt)){
+    if (is.na(z$cnt)) {
       return(NA)
     }
     return(paste0(z$cnt, " (", z$rat, "%)"))
@@ -87,13 +87,12 @@ cardinality <- function(i) {
 
 missing <- function(i) {
   cnt <- length(which(is.na(i)))
-  if(is_tibble(i)){
+  if (is_tibble(i)) {
     rat <- round(cnt / nrow(i) * 100, 3)
-  }
-  else{
+  } else {
     rat <- round(cnt / length(i) * 100, 3)
   }
-  if(cnt == 0){
+  if (cnt == 0) {
     return(list(cnt = NA, rat = NA))
   }
   return(list(cnt = cnt, rat = rat))
@@ -109,13 +108,12 @@ isUnique <- function(i) {
 
 zero <- function(i) {
   cnt <- length(which(i == 0))
-  if(is_tibble(i)){
+  if (is_tibble(i)) {
     rat <- round(cnt / nrow(i) * 100, 3)
-  }
-  else{
+  } else {
     rat <- round(cnt / length(i) * 100, 3)
   }
-  if(cnt == 0){
+  if (cnt == 0) {
     return(list(cnt = NA, rat = NA))
   }
   return(list(cnt = cnt, rat = rat))
