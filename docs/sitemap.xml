@@ -31,6 +31,12 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/mod_distributionModule_server.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mod_distributionModule_ui.html</loc>
+  </url>
+  <url>
     <loc>/reference/outlier.html</loc>
   </url>
 </urlset>

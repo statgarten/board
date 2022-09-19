@@ -1,8 +1,7 @@
 # :yellow_heart: board <img src = "" width = 120 align = 'right'>
+Data Profiling Shiny Module and functions.
 
-Data Profiling functions considered with shiny.
-
-## :clipboard: Prerequisites
+## :clipboard: Dependency
 
 * [magrittr](https://magrittr.tidyverse.org/) - 2.0.3
 * [ggplot2](https://ggplot2.tidyverse.org/) - 3.3.6
@@ -14,10 +13,11 @@ Data Profiling functions considered with shiny.
 
 ```r
 remotes::install_github('statgarten/board')
-library(scissor)
+library(board)
 ```
 
-## :paperclip: Dependency
+## :+1: Recommended package to use Board
+* [datamods](https://github.com/dreamRs/datamods)
 * [door](https://github.com/statgarten/door)
 
 ## :blush: Authors

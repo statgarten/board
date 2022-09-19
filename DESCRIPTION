@@ -1,6 +1,6 @@
 Package: board
-Title: Data profiling with shiny input
-Version: 0.0.1
+Title: Data profiling Shiny Module with reactive data and functions
+Version: 0.0.2
 Authors@R: 
     person("Jinhwan", "Kim", , "hwanistic@gmail.com", role = c("aut", "cre"))
 Description: Provides data profiling functions while gets prarmeter as text input.

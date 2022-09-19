@@ -13,7 +13,7 @@
 #'
 #' @import ggplot2
 #' @import magrittr
-#' @importFrom tibble is_tibble
+#' @importFrom tibble is_tibble as_tibble
 #' @export
 #'
 distribute <- function(i, xlabel = NULL){
