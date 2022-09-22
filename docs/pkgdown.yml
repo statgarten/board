@@ -3,8 +3,8 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   usage-distribution-Module: usage-distribution-Module.html
-last_built: 2022-09-22T01:10Z
+last_built: 2022-09-22T01:13Z
 urls:
-  reference: http://www.statgarten.com/board/reference
-  article: http://www.statgarten.com/board/articles
+  reference: https://www.statgarten.com/board/reference
+  article: https://www.statgarten.com/board/articles
 
