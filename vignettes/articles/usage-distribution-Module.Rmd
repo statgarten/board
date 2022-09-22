@@ -24,7 +24,7 @@ This article is based on **0.0.2** Version of board.
 
 ## Declare module
 
-`colorpen`'s module assumes that used in the [Shiny](https://shiny.rstudio.com/) application.
+`board`'s module assumes that used in the [Shiny](https://shiny.rstudio.com/) application.
 
 and You can use snippet(type `shinyapp`) to build very basic shiny application.
 
