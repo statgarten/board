@@ -1,6 +1,10 @@
 pandoc: '2.18'
 pkgdown: 2.0.6
 pkgdown_sha: ~
-articles: {}
-last_built: 2022-09-19T01:05Z
+articles:
+  usage-distribution-Module: usage-distribution-Module.html
+last_built: 2022-09-22T01:10Z
+urls:
+  reference: http://www.statgarten.com/board/reference
+  article: http://www.statgarten.com/board/articles
 

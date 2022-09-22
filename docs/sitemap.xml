@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>http://www.statgarten.com/board/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>http://www.statgarten.com/board/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>http://www.statgarten.com/board/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>http://www.statgarten.com/board/articles/index.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>http://www.statgarten.com/board/articles/usage-distribution-Module.html</loc>
   </url>
   <url>
-    <loc>/reference/brief.html</loc>
+    <loc>http://www.statgarten.com/board/authors.html</loc>
   </url>
   <url>
-    <loc>/reference/describe.html</loc>
+    <loc>http://www.statgarten.com/board/index.html</loc>
   </url>
   <url>
-    <loc>/reference/distribute.html</loc>
+    <loc>http://www.statgarten.com/board/reference/brief.html</loc>
   </url>
   <url>
-    <loc>/reference/dominate.html</loc>
+    <loc>http://www.statgarten.com/board/reference/describe.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>http://www.statgarten.com/board/reference/distribute.html</loc>
   </url>
   <url>
-    <loc>/reference/mod_distributionModule_server.html</loc>
+    <loc>http://www.statgarten.com/board/reference/dominate.html</loc>
   </url>
   <url>
-    <loc>/reference/mod_distributionModule_ui.html</loc>
+    <loc>http://www.statgarten.com/board/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/outlier.html</loc>
+    <loc>http://www.statgarten.com/board/reference/mod_distributionModule_server.html</loc>
+  </url>
+  <url>
+    <loc>http://www.statgarten.com/board/reference/mod_distributionModule_ui.html</loc>
+  </url>
+  <url>
+    <loc>http://www.statgarten.com/board/reference/outlier.html</loc>
   </url>
 </urlset>

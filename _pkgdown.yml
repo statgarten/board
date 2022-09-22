@@ -1,4 +1,17 @@
-url: ~
+url: http://www.statgarten.com/board/
 template:
   bootstrap: 5
+  bootswatch: flatly
+navbar:
+  structure:
+    left: [articles, reference]
+    right: [github]
+footer:
+  structure:
+    left: developed_by
+    right: built_with
+home:
+  title: Board
+  description: Shiny module for data profile
+
 
