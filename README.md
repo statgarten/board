@@ -1,4 +1,4 @@
-# :yellow_heart: board <img src = "" width = 120 align = 'right'>
+# :yellow_heart: board <img src = "logo.png" width = 120 align = 'right'>
 Data Profiling Shiny Module and functions.
 
 ## :clipboard: Dependency
