@@ -23,26 +23,47 @@
 mod_distributionModule_ui <- function(id) {
   ns <- NS(id)
   fluidRow( # Result Area
-    column(
-      width = 3,
-      plotOutput(outputId = ns("distplot"))
+    fluidRow(
+      column(
+        width = 3,
+        selectInput(
+          inputId = ns("variableDescription"),
+          label = "Select Variable",
+          choices = NULL,
+          selected = NULL,
+          multiple = FALSE
+        )
+      )
     ),
-    column(
-      width = 3,
-      plotOutput(outputId = ns("distplot2"))
+    fluidRow(
+      column(
+        width = 3,
+        plotOutput(outputId = ns("distplot2")) ## Pie chart
+      ),
+      column(
+        width = 6,
+        plotOutput(outputId = ns("distplot")) ## Histogram
+      ),
+      column(
+        width = 3,
+        uiOutput(outputId = ns("distBox")) ## Statistics
+      )
     ),
-    column(
-      width = 3,
-      uiOutput(outputId = ns("distBox"))
-    ),
-    column( # Options
-      width = 3,
-      selectInput(
-        inputId = ns("variableDescription"),
-        label = "Select Variable",
-        choices = NULL,
-        selected = NULL,
-        multiple = FALSE
+    fluidRow(
+      h4("Tabulation"),
+      column(
+        width = 3,
+        selectInput(
+          inputId = ns("variableDescription2"),
+          label = "Select Variable for cross tabulation",
+          choices = NULL,
+          selected = NULL,
+          multiple = FALSE
+        )
+      ),
+      column(
+        width = 8,
+        verbatimTextOutput(outputId = ns("variableTable"))
       )
     )
     # Main Action X (Reactive)
@@ -90,6 +111,15 @@ mod_distributionModule_server <- function(id, inputData) {
 
     observeEvent(input$variableDescription, {
       req(input$variableDescription)
+
+      updateSelectizeInput(
+        session,
+        inputId = "variableDescription2",
+        label = "Select Variable for cross tabulation",
+        choices = setdiff(c("", colnames(inputData())), input$variableDescription),
+        server = TRUE,
+        selected = numeric(0)
+      )
 
       if (input$variableDescription == "") {
         return(0)
@@ -143,6 +173,23 @@ mod_distributionModule_server <- function(id, inputData) {
 
       output$distplot2 <- renderPlot({
         ggpie(inputData()[, input$variableDescription])
+      })
+
+      output$variableTable <- renderPrint({
+        table(inputData()[, input$variableDescription])
+      })
+    })
+
+    observeEvent(input$variableDescription2, {
+      if (input$variableDescription2 == "") {
+        output$variableTable <- renderPrint({})
+        return(0)
+      }
+
+      output$variableTable <- renderPrint({
+        table(c(
+          inputData()[, input$variableDescription], inputData()[, input$variableDescription2]
+        ))
       })
     })
   })
