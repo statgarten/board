@@ -13,15 +13,17 @@ mod_distributionModule_ui(id)
 distributionModule UI Function.
 }
 \examples{
-if(interactive()){
-library(shiny)
-ui <- fluidPage(
-  mod_distributionModule_ui('module')
-)
-server <- function(input, output, session) {
-  mod_distributionModule_server('module', reactive({iris}))
-}
-shinyApp(ui, server)
+if (interactive()) {
+  library(shiny)
+  ui <- fluidPage(
+    mod_distributionModule_ui("module")
+  )
+  server <- function(input, output, session) {
+    mod_distributionModule_server("module", reactive({
+      iris
+    }))
+  }
+  shinyApp(ui, server)
 }
 
 }

@@ -30,10 +30,17 @@ brief <- function(inputData) {
   })
 
   ## correlation
-  cors <- inputData %>%
+  cors <- NULL
+  numerics <- inputData %>%
     dplyr::select(names(Filter(is.numeric, inputData))) %>%
-    cor(use = "complete.obs") %>%
-    round(3)
+    ncol()
+  if (numerics != 0) {
+    cors <- inputData %>%
+      dplyr::select(names(Filter(is.numeric, inputData))) %>%
+      cor(use = "complete.obs") %>%
+      round(3)
+  }
+
 
   ## missing
   miss <- sapply(1:nc, function(i) {

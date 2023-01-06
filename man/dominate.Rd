@@ -16,7 +16,7 @@ named list
 most common value and count & percent, among howmuch values
 }
 \examples{
-dominate(iris[,"Sepal.Length"])
-scissor::binarize(iris,'Species', 'In', 'c("virginica", "setosa")')
+dominate(iris[, "Sepal.Length"])
+scissor::binarize(iris, "Species", "In", 'c("virginica", "setosa")')
 
 }

@@ -16,7 +16,6 @@
 #' @export
 #'
 distribute <- function(i, xlabel = NULL) {
-
   # i must numeric
   if (is_tibble(i)) {
     xlabel <- names(i)

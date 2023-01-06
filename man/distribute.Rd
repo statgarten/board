@@ -18,9 +18,8 @@ histogram built with ggplot
 build histogram from character input
 }
 \examples{
-distribute(iris[,"Sepal.Width"])
+distribute(iris[, "Sepal.Width"])
 distribute(iris$Sepal.Length) # this will be work too.
-
 
 }
 \seealso{

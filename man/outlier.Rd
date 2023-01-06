@@ -16,7 +16,7 @@ named list
 calculate outlier
 }
 \examples{
-outlier(iris[,'Sepal.Width'])
+outlier(iris[, "Sepal.Width"])
 
 }
 \seealso{

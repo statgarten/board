@@ -16,7 +16,7 @@ named list
 count, mean, sd, quantile values.
 }
 \examples{
-describe(iris[,"Sepal.Width"])
+describe(iris[, "Sepal.Width"])
 describe(iris$Sepal.Length) # this will be work too.
 
 }

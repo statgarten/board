@@ -1,6 +1,6 @@
 Package: board
 Title: Data profiling Shiny Module with reactive data and functions
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     person("Jinhwan", "Kim", , "hwanistic@gmail.com", role = c("aut", "cre"))
 Description: Provides data profiling functions while gets prarmeter as text input.
@@ -13,7 +13,7 @@ Imports:
     tibble
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown
 URL: https://github.com/statgarten/board
