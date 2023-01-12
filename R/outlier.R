@@ -26,6 +26,6 @@ outlier <- function(i) {
   lu <- length(under)
 
   ov <- ifelse(lo == 0, NA, min(over))
-  uv <- ifelse(lu == 0, NA, max(over))
+  uv <- ifelse(lu == 0, NA, max(under))
   return(list(lo = lo, ov = ov, lu = lu, uv = uv))
 }
