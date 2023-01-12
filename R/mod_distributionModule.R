@@ -18,7 +18,7 @@
 #' @param id id of module
 #' @seealso mod_distributionModule_server of `board`
 #' @import shiny
-#' @import shinyjs
+#' @importFrom shinyjs hidden hide show
 #' @importFrom shiny NS tagList
 #' @export
 mod_distributionModule_ui <- function(id) {
