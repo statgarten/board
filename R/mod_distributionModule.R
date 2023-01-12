@@ -18,55 +18,61 @@
 #' @param id id of module
 #' @seealso mod_distributionModule_server of `board`
 #' @import shiny
+#' @import shinyjs
 #' @importFrom shiny NS tagList
 #' @export
 mod_distributionModule_ui <- function(id) {
   ns <- NS(id)
-  fluidRow( # Result Area
-    fluidRow(
+  fluidPage(
+    column(
+      width = 8,
+      h4("Variable distribution"),
+      style = 'border-right: dotted 1px black',
       column(
         width = 3,
-        selectInput(
-          inputId = ns("variableDescription"),
-          label = "Select Variable",
-          choices = NULL,
-          selected = NULL,
-          multiple = FALSE
-        )
-      )
-    ),
-    fluidRow(
-      column(
-        width = 3,
+        h5('Pie chart'),
         plotOutput(outputId = ns("distplot2")) ## Pie chart
       ),
       column(
-        width = 6,
+        width = 3,
+        h5("Histogram"),
         plotOutput(outputId = ns("distplot")) ## Histogram
       ),
       column(
         width = 3,
+        h5("Statistics"),
         uiOutput(outputId = ns("distBox")) ## Statistics
-      )
-    ),
-    fluidRow(
-      h4("Tabulation"),
-      column(
-        width = 3,
-        selectInput(
-          inputId = ns("variableDescription2"),
-          label = "Select Variable for cross tabulation",
-          choices = NULL,
-          selected = NULL,
-          multiple = FALSE
-        )
       ),
       column(
-        width = 8,
-        verbatimTextOutput(outputId = ns("variableTable"))
+        width = 3,
+        h5("Tabulation"),
+        verbatimTextOutput(outputId = ns("variableTable")),
+        shinyjs::hidden(
+          h5("⚠️ First 50 type printed", id = 'over50')
+        )
+
       )
+    ),
+    column(
+      width = 4,
+      h4("Variable"),
+      selectInput(
+        inputId = ns("variableDescription"),
+        label = "Select Variable",
+        choices = NULL,
+        selected = character(0),
+        multiple = FALSE
+      )
+      # ,
+      # cross tabulation removed
+      # selectInput(
+      #   inputId = ns("variableDescription2"),
+      #   label = "Select Variable for cross tabulation",
+      #   choices = NULL,
+      #   selected = NULL,
+      #   multiple = FALSE
+      # )
     )
-    # Main Action X (Reactive)
   )
 }
 
@@ -155,10 +161,10 @@ mod_distributionModule_server <- function(id, inputData) {
               column(width = 6, descriptionBlock(header = des$q4, number = "Max", marginBottom = FALSE))
             ),
             fluidRow(
-              column(width = 3, descriptionBlock(header = out$lo, number = "Large Outlier Count", marginBottom = FALSE)),
-              column(width = 3, descriptionBlock(header = out$ov, number = "Large Outlier Value", marginBottom = FALSE)),
               column(width = 3, descriptionBlock(header = out$lu, number = "Small Outlier Count", marginBottom = FALSE)),
-              column(width = 3, descriptionBlock(header = out$uv, number = "Small Outlier Value", marginBottom = FALSE))
+              column(width = 3, descriptionBlock(header = out$uv, number = "Small Outlier Value", marginBottom = FALSE)),
+              column(width = 3, descriptionBlock(header = out$lo, number = "Large Outlier Count", marginBottom = FALSE)),
+              column(width = 3, descriptionBlock(header = out$ov, number = "Large Outlier Value", marginBottom = FALSE))
             )
           )
         })
@@ -176,11 +182,19 @@ mod_distributionModule_server <- function(id, inputData) {
       })
 
       output$variableTable <- renderPrint({
-        table(inputData()[, input$variableDescription])
+        v <- table(inputData()[, input$variableDescription])
+        if(length(v) >= 50){
+          shinyjs::show(selector = "#over50")
+          return(v[1:50])
+        }
+        else{
+          shinyjs::hide(selector = '#over50')
+          return(v)
+        }
       })
     })
 
-    observeEvent(input$variableDescription2, {
+    observeEvent(input$variableDescription2, { ## Cross tabulation
       if (input$variableDescription2 == "") {
         output$variableTable <- renderPrint({})
         return(0)
