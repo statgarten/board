@@ -10,7 +10,8 @@ Imports:
     magrittr,
     dplyr,
     scales,
-    tibble
+    tibble,
+    shiny
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
