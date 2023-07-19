@@ -6,14 +6,14 @@ Authors@R:
 Description: Provides data profiling functions while gets prarmeter as text input.
 License: MIT + file LICENSE
 Imports:
-    ggplot2,
-    magrittr,
-    dplyr,
-    scales,
-    tibble,
-    shiny,
-    shinydashboardPlus,
-    shinyjs
+    ggplot2 (>= 3.4),
+    magrittr (>= 2.0),
+    dplyr (>= 1.1.2),
+    scales (>= 1.2.1),
+    tibble (>= 3.2.1),
+    shiny (>= 1.7.4),
+    shinydashboardPlus (>= 2.0.3),
+    shinyjs (>= 2.1)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
