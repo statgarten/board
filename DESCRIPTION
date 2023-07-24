@@ -8,11 +8,11 @@ License: MIT + file LICENSE
 Imports:
     ggplot2 (>= 3.4),
     magrittr (>= 2.0),
-    dplyr (>= 1.1.2),
-    scales (>= 1.2.1),
-    tibble (>= 3.2.1),
-    shiny (>= 1.7.4),
-    shinydashboardPlus (>= 2.0.3),
+    dplyr (>= 1.1),
+    scales (>= 1.2),
+    tibble (>= 3.2),
+    shiny (>= 1.7),
+    shinydashboardPlus (>= 2.0),
     shinyjs (>= 2.1)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
