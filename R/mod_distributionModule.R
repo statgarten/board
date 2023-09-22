@@ -27,10 +27,10 @@ mod_distributionModule_ui <- function(id) {
     column(
       width = 8,
       h4("Variable distribution"),
-      style = 'border-right: dotted 1px black',
+      style = "border-right: dotted 1px black",
       column(
         width = 3,
-        h5('Pie chart'),
+        h5("Pie chart"),
         plotOutput(outputId = ns("distplot2")) ## Pie chart
       ),
       column(
@@ -48,9 +48,8 @@ mod_distributionModule_ui <- function(id) {
         h5("Tabulation"),
         verbatimTextOutput(outputId = ns("variableTable")),
         shinyjs::hidden(
-          h5("⚠️ First 50 type printed", id = 'over50')
+          h5("⚠️ First 50 type printed", id = "over50")
         )
-
       )
     ),
     column(
@@ -183,12 +182,11 @@ mod_distributionModule_server <- function(id, inputData) {
 
       output$variableTable <- renderPrint({
         v <- table(inputData()[, input$variableDescription])
-        if(length(v) >= 50){
+        if (length(v) >= 50) {
           shinyjs::show(selector = "#over50")
           return(v[1:50])
-        }
-        else{
-          shinyjs::hide(selector = '#over50')
+        } else {
+          shinyjs::hide(selector = "#over50")
           return(v)
         }
       })
