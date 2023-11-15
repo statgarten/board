@@ -2,7 +2,7 @@
 Data Profiling Shiny Module and functions.
 Shiny와 호환되는 데이터 프로파일링 함수를 제공합니다.
 
-## :clipboard: Dependency
+## :clipboard: Dependency/의존 관계
 
 * [magrittr](https://magrittr.tidyverse.org/) - 2.0.3
 * [ggplot2](https://ggplot2.tidyverse.org/) - 3.3.6
