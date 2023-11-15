@@ -1,5 +1,6 @@
 # :yellow_heart: board <img src = "logo.png" width = 120 align = 'right'>
 Data Profiling Shiny Module and functions.
+
 Shiny와 호환되는 데이터 프로파일링 함수를 제공합니다.
 
 ## :clipboard: Dependency/의존 관계
@@ -10,7 +11,7 @@ Shiny와 호환되는 데이터 프로파일링 함수를 제공합니다.
 * [scales](https://scales.r-lib.org/) - 1.2.1
 * [tibble](https://tibble.tidyverse.org/) - 3.1.8
 
-## :wrench: Install
+## :wrench: Install/설치
 
 ```r
 remotes::install_github('statgarten/board')
